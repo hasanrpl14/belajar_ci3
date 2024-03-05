@@ -1,28 +1,36 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Page extends CI_Controller
 {
 	public function index()
 	{
-		$this->load->view('home');
+		$data['meta'] = [
+			'title' => 'BeritaCoding',
+		];
+
+		$this->load->view('home', $data);
 	}
 
 	public function about()
 	{
-		$this->load->view('about');
+		$data['meta'] = [
+			'title' => 'About BeritaCoding',
+		];
+
+		$this->load->view('about', $data);
 	}
 
-	// public function contact()
-	// {
-	// 	$this->load->view('contact');
-	// 	// $this->load->view('nama_view');
-	// }
 	public function contact()
 	{
-		if ($this->input->method() === 'post') {
+		$data['meta'] = [
+			'title' => 'Contact Us',
+		];
+		
+		if($this->input->method() === 'post'){
 			print_r($this->input->post());
 		}
 
-		$this->load->view('contact');
+		$this->load->view('contact', $data);
 	}
 }
